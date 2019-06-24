@@ -1,11 +1,17 @@
 <?php
 
+require_once __DIR__ . '/../src/Interface/QuoteRenderInterface.php';
+require_once __DIR__ . '/../src/Interface/TemplateDataAttributeInterface.php';
+require_once __DIR__ . '/../src/Interface/TemplateManagerInterface.php';
 require_once __DIR__ . '/../src/Entity/Destination.php';
 require_once __DIR__ . '/../src/Entity/Quote.php';
 require_once __DIR__ . '/../src/Entity/Site.php';
 require_once __DIR__ . '/../src/Entity/Template.php';
 require_once __DIR__ . '/../src/Entity/User.php';
+require_once __DIR__ . '/../src/Entity/TemplateData.php';
 require_once __DIR__ . '/../src/Helper/SingletonTrait.php';
+require_once __DIR__ . '/../src/Helper/RendererHtml.php';
+require_once __DIR__ . '/../src/Helper/RendererString.php';
 require_once __DIR__ . '/../src/Context/ApplicationContext.php';
 require_once __DIR__ . '/../src/Repository/Repository.php';
 require_once __DIR__ . '/../src/Repository/DestinationRepository.php';
