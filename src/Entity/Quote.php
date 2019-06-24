@@ -1,11 +1,11 @@
 <?php
 
-class Quote
+final class Quote
 {
-    public $id;
-    public $siteId;
-    public $destinationId;
-    public $dateQuoted;
+    private $id;
+    private $siteId;
+    private $destinationId;
+    private $dateQuoted;
 
     public function __construct($id, $siteId, $destinationId, $dateQuoted)
     {
@@ -15,13 +15,35 @@ class Quote
         $this->dateQuoted = $dateQuoted;
     }
 
-    public static function renderHtml(Quote $quote)
+    /**
+     * @return int
+     */
+    public function getId()
     {
-        return '<p>' . $quote->id . '</p>';
+        return $this->id;
     }
 
-    public static function renderText(Quote $quote)
+    /**
+     * @return int
+     */
+    public function getSiteId()
     {
-        return (string) $quote->id;
+        return $this->siteId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDestinationId()
+    {
+        return $this->destinationId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDateQuoted()
+    {
+        return $this->dateQuoted;
     }
 }

@@ -15,6 +15,20 @@ class TemplateManager implements TemplateManagerInterface
         return $replaced;
     }
 
+    /**
+     * @param array $data
+     * @return Quote|null
+     */
+    public function getQuoteFromArray(array $data)
+    {
+        if (isset($data['quote']) && $data['quote'] instanceof Quote) {
+            return $data['quote'];
+        }
+
+        return null;
+    }
+
+
     private function computeText($text, array $data)
     {
         $APPLICATION_CONTEXT = ApplicationContext::getInstance();
@@ -38,14 +52,14 @@ class TemplateManager implements TemplateManagerInterface
                 if ($containsSummaryHtml !== false) {
                     $text = str_replace(
                         '[quote:summary_html]',
-                        Quote::renderHtml($_quoteFromRepository),
+                        QuoteRendererHtml::render($_quoteFromRepository),
                         $text
                     );
                 }
                 if ($containsSummary !== false) {
                     $text = str_replace(
                         '[quote:summary]',
-                        Quote::renderText($_quoteFromRepository),
+                        QuoteRendererString::render($_quoteFromRepository),
                         $text
                     );
                 }
