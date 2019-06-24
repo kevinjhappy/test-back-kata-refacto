@@ -35,7 +35,8 @@ Bien cordialement,
 
 L'équipe Evaneos.com
 www.evaneos.com
-");
+"
+);
 $templateManager = new TemplateManager();
 
 $message = $templateManager->getTemplateComputed(

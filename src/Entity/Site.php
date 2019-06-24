@@ -26,6 +26,4 @@ final class Site
     {
         return $this->url;
     }
-
-
 }

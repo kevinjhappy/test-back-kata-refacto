@@ -16,7 +16,7 @@ final class TemplateData implements TemplateDataAttributeInterface
 
     private function setAttribute($attributeName, $attributeValue)
     {
-        $this->templateText = str_replace($attributeName , $attributeValue, $this->templateText);
+        $this->templateText = str_replace($attributeName, $attributeValue, $this->templateText);
     }
 
     public function replaceAttributeNameToValue($attributeName, $attributeValue)

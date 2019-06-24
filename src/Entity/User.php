@@ -46,6 +46,4 @@ final class User
     {
         return $this->email;
     }
-
-
 }

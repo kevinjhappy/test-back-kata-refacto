@@ -55,7 +55,6 @@ class TemplateManager implements TemplateManagerInterface
         }
 
         $templateData->replaceAttributeNameToValue(TemplateData::QUOTE_DESTINATION_LINK, '');
-
     }
 
     private function computeText($text, array $data)

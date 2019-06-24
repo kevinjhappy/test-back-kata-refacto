@@ -55,6 +55,4 @@ final class Destination
     {
         return $this->computerName;
     }
-
-    
 }
