@@ -15,3 +15,5 @@ I adapt then TemplateData with the function check and replaceAttribute and simpl
 
 To apply object Calistenics I still have one if else to remove
 
+To final commit I applied OC into computeText, and respect then one indentation per methods
+
