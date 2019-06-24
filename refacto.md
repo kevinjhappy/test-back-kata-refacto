@@ -13,7 +13,7 @@ Then I made a new entity to deal with all TemplateData to have a specific object
 
 I adapt then TemplateData with the function check and replaceAttribute and simplified all object and if else into the computeText
 
-To apply object Calistenics I still have one if else to remove
+To apply object calisthenics I still have one if else to remove
 
 To final commit I applied OC into computeText, and respect then one indentation per methods
 
