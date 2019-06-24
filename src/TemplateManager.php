@@ -27,6 +27,12 @@ class TemplateManager implements TemplateManagerInterface
         return null;
     }
 
+
+    public function getDestinationUrl($websiteUrl, $countryName, $quoteId)
+    {
+        return $websiteUrl . '/' . $countryName . '/quote/' . $quoteId;
+    }
+
     /**
      * @param array $data
      * @return User
@@ -43,12 +49,35 @@ class TemplateManager implements TemplateManagerInterface
 
     private function computeText($text, array $data)
     {
+        $templateData = new TemplateData($text);
         $user = $this->getUserFromArray($data);
-        $quote = $this->getQuoteFromArray($data);
 
-        if ($quote) {
+        if ($quote = $this->getQuoteFromArray($data)) {
+            $destinationOfQuote = DestinationRepository::getInstance()->getById($quote->getDestinationId());
+
+            $templateData->replaceAttributeNameToValue(TemplateData::QUOTE_DESTINATION_NAME, $destinationOfQuote->getCountryName());
+            $site = SiteRepository::getInstance()->getById($quote->getSiteId());
+            $url = $this->getDestinationUrl($site->getUrl(), $destinationOfQuote->getCountryName(), $quote->getId());
+
+            if ($templateData->check(TemplateData::QUOTE_DESTINATION_LINK)) {
+                $templateData->replaceAttributeNameToValue(TemplateData::QUOTE_DESTINATION_LINK, $url);
+            } else {
+                $templateData->replaceAttributeNameToValue(TemplateData::QUOTE_DESTINATION_LINK, '');
+            }
+
+            $templateData->replaceAttributeNameToValue(TemplateData::QUOTE_SUMMARY_HTML, RendererHtml::render($quote->getId()));
+            $templateData->replaceAttributeNameToValue(TemplateData::QUOTE_SUMMARY, RendererString::render($quote->getId()));
+        }
+
+        $templateData->replaceAttributeNameToValue(TemplateData::USER_FIRST_NAME, $user->getFirstname());
+
+        return $templateData->getTemplateData();
+
+            /*
+
+
             $_quoteFromRepository = QuoteRepository::getInstance()->getById($quote->getId());
-            $usefulObject = SiteRepository::getInstance()->getById($quote->getSiteId());
+            $site = SiteRepository::getInstance()->getById($quote->getSiteId());
             $destinationOfQuote = DestinationRepository::getInstance()->getById($quote->getDestinationId());
 
             if(strpos($text, '[quote:destination_link]') !== false){
@@ -74,8 +103,6 @@ class TemplateManager implements TemplateManagerInterface
                     );
                 }
             }
-
-            (strpos($text, '[quote:destination_name]') !== false) and $text = str_replace('[quote:destination_name]',$destinationOfQuote->getCountryName(),$text);
         }
 
         if (isset($destination))
@@ -89,5 +116,6 @@ class TemplateManager implements TemplateManagerInterface
         }
 
         return $text;
+            */
     }
 }
