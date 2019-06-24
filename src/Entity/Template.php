@@ -37,5 +37,5 @@ final class Template
         return $this->content;
     }
 
-    
+
 }

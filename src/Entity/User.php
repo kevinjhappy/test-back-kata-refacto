@@ -28,7 +28,7 @@ final class User
      */
     public function getFirstname()
     {
-        return $this->firstname;
+        return ucfirst(strtolower($this->firstname));
     }
 
     /**
@@ -36,7 +36,7 @@ final class User
      */
     public function getLastname()
     {
-        return $this->lastname;
+        return strtoupper($this->lastname);
     }
 
     /**

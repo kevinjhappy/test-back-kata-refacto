@@ -1,6 +1,6 @@
 <?php
 
-interface QuoteRenderInterface
+interface RenderInterface
 {
-    public static function render(Quote $quote);
+    public static function render($id);
 }
